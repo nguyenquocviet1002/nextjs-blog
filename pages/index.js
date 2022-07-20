@@ -19,7 +19,7 @@ export default function Home({ allPostsData }) {
         <ul>
           {allPostsData.map(({ id, date, title }) => (
             <li key={id}>
-              <Link href={`posts/${id}`}>
+              <Link href={`/posts/${id}`}>
                 <a className="font-black hover:text-blue-600">{title}</a>
               </Link>
               <p>{id}</p>

@@ -1,10 +1,10 @@
-import Head from "next/head";
-import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
-import Date from "../../components/date";
+import Head from 'next/head';
+import Layout from '../../components/layout';
+import { getAllPostIds, getPostData } from '../../lib/posts';
+import Date from '../../components/date';
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const paths = await getAllPostIds();
   return {
     paths,
     fallback: false,
@@ -26,9 +26,8 @@ export default function Post({ postData }) {
         <title>{postData.title}</title>
       </Head>
       <h1>{postData.title}</h1>
-      <p>{postData.id}</p>
       <Date dateString={postData.date} />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
+      <div>{postData.content}</div>
     </Layout>
   );
 }
